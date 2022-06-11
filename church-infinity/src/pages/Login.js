@@ -35,15 +35,15 @@ const Login = () => {
                 <IonRow className="ion-justify-content-center">
                   <IonItem className="border" style={{ width: "90%" }}>
                     <IonIcon color="primary" icon={mail} />
-                    <IonLabel style={{marginLeft : '7px', fontWeight : 'bold'}} >Email</IonLabel>
-                    <IonInput />
+                    <IonLabel  style={{marginLeft : '6px', fontWeight : 'bold'}} >Email</IonLabel>
+                    <IonInput placeholder="email@email.com" />
                   </IonItem>
                 </IonRow>
                 <IonRow className="ion-justify-content-center">
                   <IonItem className="border" style={{ width: "90%" }}>
                     <IonIcon color="primary" icon={lockClosed} />
-                    <IonLabel  style={{marginLeft : '7px', fontWeight : 'bold'}}>Password</IonLabel>
-                    <IonInput />
+                    <IonLabel  style={{marginLeft : '6px', fontWeight : 'bold'}}>Password</IonLabel>
+                    <IonInput placeholder="*********"/>
                   </IonItem>
                 </IonRow>
               </IonCol>
