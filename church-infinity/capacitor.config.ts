@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.churchinfinity.app',
   appName: 'church-infinity',
   webDir: 'build',
   bundledWebRuntime: false

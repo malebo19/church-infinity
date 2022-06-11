@@ -1,20 +1,71 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { Link } from 'react-router-dom';
+import {
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonPage,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import { lockClosed, mail } from "ionicons/icons";
+import { Link } from "react-router-dom";
 
-import './Login.css';
+import "./Login.css";
 
 const Login = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Login Page</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <h1>Login</h1>
-        <Link to='/Main' >Login</Link> <br/>
-        <Link to='/Register' >Register</Link>
+      <IonContent>
+        <div className="login">
+          <IonGrid>
+            <IonRow
+              style={{ height: "70vh" }}
+              className="ion-align-items-center"
+            >
+              <IonCol>
+                <h1 className="LoginH1">Login</h1>
+                <IonRow className="ion-justify-content-center">
+                  <IonItem className="border" style={{ width: "90%" }}>
+                    <IonIcon color="primary" icon={mail} />
+                    <IonLabel style={{marginLeft : '7px', fontWeight : 'bold'}} >Email</IonLabel>
+                    <IonInput />
+                  </IonItem>
+                </IonRow>
+                <IonRow className="ion-justify-content-center">
+                  <IonItem className="border" style={{ width: "90%" }}>
+                    <IonIcon color="primary" icon={lockClosed} />
+                    <IonLabel  style={{marginLeft : '7px', fontWeight : 'bold'}}>Password</IonLabel>
+                    <IonInput />
+                  </IonItem>
+                </IonRow>
+              </IonCol>
+            </IonRow>
+            <IonRow style={{ height: "30vh" }}>
+              <IonCol>
+                <IonButton routerLink="/Main" expand="block">
+                  Login
+                </IonButton>
+                <div className="ion-text-center">
+                  <IonButton routerLink="/Register" fill="clear" color="dark">
+                    Register
+                  </IonButton>
+                </div>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </div>
+
+        <div className="ellipse-1"></div>
+        <div className="ellipse-2"></div>
+        <div className="ellipse-3"></div>
       </IonContent>
     </IonPage>
   );

@@ -1,0 +1,6 @@
+{
+	"appId": "com.churchinfinity.app",
+	"appName": "church-infinity",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
