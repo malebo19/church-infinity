@@ -1,0 +1,61 @@
+
+.Update ion-card {
+    margin: 5px ;
+}
+.post-header{
+    display: flex;
+    align-items: center;
+}
+.post-header div{
+    
+    margin: 8px;
+}
+.post-footer{
+    margin: 8px;
+    border-top: 1px solid lightblue;
+    display: flex;
+}
+.post-footer div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+.footer-likes{
+    background-color: lightblue;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 4px;
+}
+.footer-comments{
+    color: lightgray;
+
+}
+.post-content p{
+    font-size: 1.1rem;
+        /* text-align: center; */
+}
+.new-post-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* height: 30vh; */
+}
+.new-post{
+    display: flex;
+    background-color: rgb(16, 170, 221);
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgba(129, 126, 126, 0.5);
+    padding: 10px;
+    border: 1px solid lightblue;
+    border-radius: 9px;
+    margin-top: 15px;
+}
+.new-post div{
+    margin : 0 4px;
+}

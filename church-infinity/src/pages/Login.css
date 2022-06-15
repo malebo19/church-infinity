@@ -12,7 +12,7 @@
 }
 .ellipse-1 {
   position: absolute;
-  left: 130px;
+  left:50%;
   top: -35px;
   background-image: radial-gradient(#2a93d5, #add9d8ab);
   border-radius: 50%;
@@ -33,7 +33,7 @@
 .ellipse-3 {
   position: absolute;
   bottom: -10px;
-  left: 50px;
+  left: 20%;
   background-image: radial-gradient(#25c8fa, #add9d8ab);
   height: 240px;
   width: 253px;

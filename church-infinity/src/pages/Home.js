@@ -28,6 +28,8 @@ import Event from "./Event";
 import Profile from "./Profile";
 import BusinessLounge from "./BusinessLounge";
 import ActivitiesRegistration from "./ActivitiesRegistration";
+import ProfileUpdate from "./ProfileUpdate";
+import Groups from "./Groups";
 
 function Home() {
   return (
@@ -54,6 +56,12 @@ function Home() {
         </Route>
         <Route exact path="/Main/Home/ActivitiesRegistration">
           <ActivitiesRegistration/>
+        </Route>
+        <Route exact path="/Main/Home/ProfileUpdate" >
+          <ProfileUpdate/>
+        </Route>
+        <Route exact path="/Main/Home/Groups" >
+          <Groups/>
         </Route>
       </IonRouterOutlet>
       <IonTabBar slot="bottom">

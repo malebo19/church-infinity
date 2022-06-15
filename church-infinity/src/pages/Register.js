@@ -1,6 +1,8 @@
 import React from "react";
 import {
+  IonBackButton,
   IonButton,
+  IonButtons,
   IonCheckbox,
   IonCol,
   IonContent,
@@ -20,6 +22,15 @@ import "./Register.css";
 function Register() {
   return (
     <IonPage>
+      {/* Back button */}
+      <IonHeader>
+        <IonToolbar >
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/login" />
+          </IonButtons>
+          <IonTitle>Register</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent>
         <div className="Register">
           <IonGrid style={{ width: "85%" }} className="ion-align-items-center">
@@ -110,8 +121,8 @@ function Register() {
               </IonRow>
             </div>
 
+            <p>Are new to Local Church (less than 2 months) ?</p>
             <IonRow>
-              <p>Are new to Local Church (less than 2 months) ?</p>
               <IonCol size="1">
                 <IonCheckbox
                 // checked={}
@@ -193,7 +204,7 @@ function Register() {
             </IonRow>
             <br />
 
-            <IonButton expand="block">Register</IonButton>
+            <IonButton expand="block" routerLink="/Main" >Register</IonButton>
           </IonGrid>
         </div>
         {/* <Link to="/Main">Login</Link> <br /> */}

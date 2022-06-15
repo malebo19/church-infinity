@@ -1,0 +1,21 @@
+.Profile ion-card{
+    margin: 12px 15px;
+}
+.profile-card{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.profile-card-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.profile-card-avatar div{
+    margin: 9px;
+}
+.profile-card-avatar img{
+    border : 3px solid white;
+}
