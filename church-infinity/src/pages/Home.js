@@ -30,6 +30,7 @@ import BusinessLounge from "./BusinessLounge";
 import ActivitiesRegistration from "./ActivitiesRegistration";
 import ProfileUpdate from "./ProfileUpdate";
 import Groups from "./Groups";
+import Gallery from "./Gallery";
 
 function Home() {
   return (
@@ -46,23 +47,27 @@ function Home() {
           <Chat />
         </Route>
         <Route exact path="/Main/Home/Event">
-          <Event/>
+          <Event />
         </Route>
         <Route exact path="/Main/Home/Profile">
-          <Profile/>
+          <Profile />
         </Route>
-        <Route exact path="/Main/Home/BusinessLounge" >
-          <BusinessLounge/>
+        <Route exact path="/Main/Home/BusinessLounge">
+          <BusinessLounge />
         </Route>
         <Route exact path="/Main/Home/ActivitiesRegistration">
-          <ActivitiesRegistration/>
+          <ActivitiesRegistration />
         </Route>
-        <Route exact path="/Main/Home/ProfileUpdate" >
-          <ProfileUpdate/>
+        <Route exact path="/Main/Home/ProfileUpdate">
+          <ProfileUpdate />
         </Route>
-        <Route exact path="/Main/Home/Groups" >
-          <Groups/>
+        <Route exact path="/Main/Home/Groups">
+          <Groups />
         </Route>
+        <Route exact path="/Main/Home/Gallery">
+          <Gallery />
+        </Route>
+      
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="tab1" href="/Main/Home/Tab1">

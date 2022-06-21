@@ -58,3 +58,6 @@ ion-card-content {
     margin: 7px;
     padding: 10px;
 }
+.transparentToolbar{
+  /* --border-color: 1px solid red; */
+}

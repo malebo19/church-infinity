@@ -1,0 +1,39 @@
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+.types {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    width: 80%;
+    background: linear-gradient(to right, lightblue, #465efb50);
+    border-radius: 9px;
+    /* background: lightblue; */
+    box-shadow: 0 0 10px rgba(76, 98, 119, 0.626);
+    padding: 22px;
+ 
+}
+.type-button{
+    cursor: pointer;
+    text-align: center;
+    background: white;
+    margin: 7px;
+    border-radius: 15px;
+    padding: 5px;
+    width: 65%;
+
+   border-style: inset;
+   transition: 0.3s;
+
+}
+.type-button:hover{
+    background: lightblue;
+    color: white;
+    border-style: double;
+}

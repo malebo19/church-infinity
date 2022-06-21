@@ -98,17 +98,23 @@ function Update() {
                       <div className="post-header">
                         <div>
                           <IonAvatar>
-                            <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
+                            <img src={Kenan} />
                           </IonAvatar>
                         </div>
                         <div>
-                          <h3>Malebo M</h3>
-                          <p>4 mins ago</p>
+                          <h3>Kenan K</h3>
+                          <p>12 mins ago</p>
                         </div>
                       </div>
                       <div className="post-content">
-                        <img src={banner} />
-                        <img src={testimony} />
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Lorem ipsum dolor sit amet, consectetur
+                          adipiscing elit. Lorem ipsum dolor sit amet,
+                          consectetur adipiscing elit. Lorem ipsum dolor sit
+                          amet, consectetur adipiscing elit. Lorem ipsum dolor
+                          sit amet, consectetur adipiscing elit.
+                        </p>
                       </div>
                       <div className="post-footer">
                         <div className="footer-likes">
@@ -133,23 +139,17 @@ function Update() {
                       <div className="post-header">
                         <div>
                           <IonAvatar>
-                            <img src={Kenan} />
+                            <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
                           </IonAvatar>
                         </div>
                         <div>
-                          <h3>Kenan K</h3>
-                          <p>12 mins ago</p>
+                          <h3>Malebo M</h3>
+                          <p>4 mins ago</p>
                         </div>
                       </div>
                       <div className="post-content">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Lorem ipsum dolor sit amet, consectetur
-                          adipiscing elit. Lorem ipsum dolor sit amet,
-                          consectetur adipiscing elit. Lorem ipsum dolor sit
-                          amet, consectetur adipiscing elit. Lorem ipsum dolor
-                          sit amet, consectetur adipiscing elit.
-                        </p>
+                        <img src={banner} />
+                        <img src={testimony} />
                       </div>
                       <div className="post-footer">
                         <div className="footer-likes">

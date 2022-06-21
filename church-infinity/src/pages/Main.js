@@ -13,6 +13,7 @@ import Welcome from "./Welcome";
 import About from "./About";
 import Onboarding from "./Onboarding";
 import Home from "./Home";
+import GroupChat from "./GroupChat";
 
 function Main() {
   return (
@@ -27,7 +28,10 @@ function Main() {
         <Route path="/Main/Onboarding">
           <Onboarding />
         </Route>
-        <Route path="/Main/Home" render = {()=> <Home/>} />
+        <Route path="/Main/Home" render={() => <Home />} />
+        <Route path="/Main/GroupChat/:groupID">
+          <GroupChat />
+        </Route>
       </IonRouterOutlet>
     </IonPage>
   );

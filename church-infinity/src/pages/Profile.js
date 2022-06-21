@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+
 import {
   IonAvatar,
   IonBackButton,
@@ -26,6 +28,8 @@ import {
   IonToggle,
   IonToolbar,
 } from "@ionic/react";
+import { UserContext } from "../App";
+
 import "./Profile.css";
 import {
   logOut,
@@ -39,6 +43,7 @@ import {
   person,
   personOutline,
 } from "ionicons/icons";
+import { getAuth, signOut } from "firebase/auth";
 
 const darkModeHandler = (ev) => {
   // toggle a classlist of the body element
@@ -46,6 +51,18 @@ const darkModeHandler = (ev) => {
   console.log("darkModeHandler", ev);
 };
 function Profile() {
+  let history = useHistory();
+  const auth = getAuth();
+
+  const { user, setUser } = useContext(UserContext);
+  var username = user.email.split("@")[0];
+  const signOutHandler = () => {
+    //Remove user from local storage
+    localStorage.removeItem("user");
+    setUser(null);
+    // history.push("/login");
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -74,8 +91,10 @@ function Profile() {
                             fontWeight: "bold",
                           }}
                         >
-                          <h4 style={{ fontWeight: "bold" }}>Kenan Kasongo</h4>
-                          <h6>@KenanK</h6>
+                          <h4 style={{ fontWeight: "bold" }}>
+                            {user.username}
+                          </h4>
+                          <h6>{username}</h6>
                         </div>
                       </div>
                       <div>
@@ -114,7 +133,7 @@ function Profile() {
                           <p>Access your group</p>
                         </IonLabel>
                       </IonItem>
-                      <IonItem button routerLink="/">
+                      <IonItem button onClick={signOutHandler}>
                         <IonIcon
                           style={{ marginRight: "10px" }}
                           icon={logOut}

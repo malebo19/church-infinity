@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   IonAvatar,
+  IonBackdrop,
+  IonButton,
   IonCard,
   IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
   IonCol,
   IonContent,
   IonGrid,
@@ -10,6 +14,7 @@ import {
   IonIcon,
   IonInput,
   IonItem,
+  IonModal,
   IonPage,
   IonRow,
   IonSlide,
@@ -35,12 +40,16 @@ import {
   timer,
   videocam,
 } from "ionicons/icons";
+import { UserContext } from "../App";
+
 import dove from "../assets/dove.png";
 import banner from "../assets/banner.png";
 import testimony from "../assets/testimony.png";
 import "./HomeMain.css";
 
 function HomeMain() {
+  const { user, setUser } = useContext(UserContext);
+  const [homeModal, sethomeModal] = useState(false);
   let history = useHistory();
 
   const slideOpts = {
@@ -48,17 +57,54 @@ function HomeMain() {
     speed: 400,
   };
 
-  // useEffect(() => {
-  //   async function getLocation() {
-  //     const coordinates = await Geolocation.getCurrentPosition();
-  //     console.log(coordinates);
-  //   }
+  useEffect(() => {
+    console.log(user);
 
-  //   getLocation();
-  // }, []);
+    // async function getLocation() {
+    //   const coordinates = await Geolocation.getCurrentPosition();
+    //   console.log(coordinates);
+    // }
+
+    // getLocation();
+  }, []);
   return (
     <IonPage>
+      <IonModal isOpen={homeModal}>
+        <IonContent>
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>STPPL Program Coming Up</IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent>
+              Dear faith community - Some of our beloved parishioners are
+              suffering extensive damages to their homes from the recent storm.
+              Many have lost possessions, important resources, and even the use
+              of their buildings. As a church, we must lift each other up and
+              support our members through tragedy. <br /> <br /> Please consider
+              adding an extra donation to our second collection this week. We
+              will be offering all donations to church members in need.
+              Donations will go to rebuilding homes and providing food and clean
+              water to survivors. If you've found yourself in need of
+              assistance, please contact the office at [phone number or email].{" "}
+              <br /> <br />
+              We will also be accepting donations of dry goods, baby necessities
+              and clothing. If you'd like to donate items, please visit the
+              office at [address or location]. Thank you for your continued
+              generosity! <br />
+              <IonButton onClick={() => sethomeModal(false)} expand="block">
+                Sign Up
+              </IonButton>
+              <div className="ion-text-right">
+                <IonButton onClick={() => sethomeModal(false)} fill="outline">
+                  Home
+                </IonButton>
+              </div>
+            </IonCardContent>
+          </IonCard>
+        </IonContent>
+      </IonModal>
       <IonContent>
+        <h1>{user.username}</h1>
         <div className="dove">
           <img src={dove} />
         </div>
@@ -78,10 +124,10 @@ function HomeMain() {
             <IonInput placeholder="  Search" />
           </div>
           <div>
-            <IonIcon size="large" icon={notifications} />
+            <IonIcon size="large" color="primary" icon={notifications} />
           </div>
         </div>
-        <IonCard button>
+        <IonCard button onClick={() => sethomeModal(true)}>
           <IonCardContent>
             <img src={banner} />
             <h2 style={{ fontWeight: "bold" }}>
@@ -97,7 +143,7 @@ function HomeMain() {
           <div className="Main">
             <IonRow className="ion-text-center">
               <IonCol>
-                <IonCard button routerLink="/Main/Home/Tab2" >
+                <IonCard button routerLink="/Main/Home/Tab2">
                   <IonCardContent>
                     <div className="mainIcon">
                       <IonIcon color="danger" icon={timer} />
@@ -107,7 +153,7 @@ function HomeMain() {
                 </IonCard>
               </IonCol>
               <IonCol>
-                <IonCard button>
+                <IonCard button routerLink="/Main/Home/Event">
                   <IonCardContent>
                     <div className="mainIcon">
                       <IonIcon color="danger" icon={calendar} />
@@ -129,7 +175,7 @@ function HomeMain() {
                 </IonCard>
               </IonCol>
               <IonCol>
-                <IonCard button>
+                <IonCard button routerLink="/Main/Home/ActivitiesRegistration">
                   <IonCardContent>
                     <div className="mainIcon">
                       <IonIcon color="danger" icon={newspaper} />
@@ -151,7 +197,7 @@ function HomeMain() {
                 </IonCard>
               </IonCol>
               <IonCol>
-                <IonCard button>
+                <IonCard button routerLink="/Main/Home/BusinessLounge">
                   <IonCardContent>
                     <div className="mainIcon">
                       <IonIcon color="danger" icon={business} />
@@ -163,7 +209,7 @@ function HomeMain() {
             </IonRow>
             <IonRow className="ion-text-center">
               <IonCol>
-                <IonCard button>
+                <IonCard button routerLink="/Main/Home/Gallery">
                   <IonCardContent>
                     <div className="mainIcon">
                       <IonIcon color="danger" icon={images} />
