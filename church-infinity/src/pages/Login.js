@@ -16,7 +16,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 
 import { lockClosed, mail } from "ionicons/icons";
@@ -32,7 +32,7 @@ const Login = () => {
   const { user, setUser } = useContext(UserContext);
   console.log(user);
 
-  const auth = getAuth();
+  // const auth = getAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

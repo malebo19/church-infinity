@@ -43,7 +43,8 @@ import {
   person,
   personOutline,
 } from "ionicons/icons";
-import { getAuth, signOut } from "firebase/auth";
+import { IP } from "../services/config";
+// import { getAuth, signOut } from "firebase/auth";
 
 const darkModeHandler = (ev) => {
   // toggle a classlist of the body element
@@ -52,7 +53,7 @@ const darkModeHandler = (ev) => {
 };
 function Profile() {
   let history = useHistory();
-  const auth = getAuth();
+  // const auth = getAuth();
 
   const { user, setUser } = useContext(UserContext);
   var username = user.email.split("@")[0];
@@ -84,7 +85,7 @@ function Profile() {
                     <div className="profile-card">
                       <div className="profile-card-avatar">
                         <IonAvatar>
-                          <img src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg" />
+                          <img src={user.profile.trim().length > 0 ? IP+ "/" + user.profile : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"  } />
                         </IonAvatar>
                         <div
                           style={{

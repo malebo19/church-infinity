@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import {
   IonBackButton,
@@ -31,7 +31,7 @@ import { UserContext } from "../App";
 function Register() {
   const { user, setUser } = useContext(UserContext);
 
-  const auth = getAuth();
+  // const auth = getAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

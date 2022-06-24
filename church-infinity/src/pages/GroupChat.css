@@ -1,0 +1,38 @@
+
+.chatbox {
+  margin-bottom: 500px;
+}
+.chatbox-msg {
+  background-color: #ebebeb;
+  /* width: 60%; */
+  margin: 7px;
+  border-radius: 14px;
+  padding: 12px;
+  max-width: 85%;
+}
+.chatbox .left {
+    float: left;
+    clear: both;
+    /* background-color: #2a93d5; */
+  }
+.chatbox .right {
+  float: right;
+  clear: both;
+  background-color: #2a93d5;
+  color: white;
+}
+
+.chat-input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ebebeb;
+  border-radius: 9px;
+  position: fixed;
+  bottom: 0;
+  padding: 4px;
+}
+.chat-icon{
+    margin: 5px;
+}
