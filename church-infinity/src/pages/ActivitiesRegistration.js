@@ -2,6 +2,7 @@ import React from "react";
 import {
   IonBackButton,
   IonButtons,
+  IonCard,
   IonContent,
   IonHeader,
   IonPage,
@@ -24,10 +25,10 @@ function ActivitiesRegistration() {
         <div className="middle">
           <div className="types">
             <h1>Select Types of Registration</h1>
-            <div className="type-button">Activities & Campaigns</div>
-            <div className="type-button">Departments</div>
-            <div className="type-button">Ministry institutions</div>
-            <div className="type-button">Sacrements</div>
+            <IonCard routerLink="/Main/Home/ActivitiesRegistration/Campaings"><div className="type-button">Activities & Campaigns</div></IonCard>
+            <IonCard routerLink="/Main/Home/ActivitiesRegistration/Departments"><div className="type-button">Departments</div></IonCard>
+            <IonCard routerLink="/Main/Home/ActivitiesRegistration/MinInstitutions"><div className="type-button">Ministry institutions</div></IonCard>
+            <IonCard routerLink="/Main/Home/ActivitiesRegistration/Departments"><div className="type-button">Sacrements</div></IonCard>
           </div>
         </div>
       </IonContent>
