@@ -258,7 +258,7 @@ function DepartmentsRegistration() {
                         margin: "6px",
                       }}
                     >
-                      <IonLabel>Usherirng</IonLabel>
+                      <IonLabel>Ushering</IonLabel>
                       <IonRadio slot="start" value="ushering" />
                     </IonItem>
                                     

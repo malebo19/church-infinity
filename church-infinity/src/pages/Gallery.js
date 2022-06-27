@@ -43,7 +43,7 @@ function Gallery() {
       <IonHeader>
         <IonToolbar>
           <IonButtons>
-            <IonBackButton />
+            <IonBackButton defaultHref="/login" />
           </IonButtons>
           <IonTitle>Gallery</IonTitle>
         </IonToolbar>

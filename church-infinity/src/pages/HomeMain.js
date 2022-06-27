@@ -29,7 +29,6 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Geolocation } from "@capacitor/geolocation";
 import {
-  add,
   buildOutline,
   business,
   calendar,
@@ -44,6 +43,16 @@ import {
   videocam,
 } from "ionicons/icons";
 import { UserContext } from "../App";
+
+import add from "../assets/add.svg";
+import explore from "../assets/explore.svg";
+import businesss from "../assets/business.svg";
+import events from "../assets/events.svg";
+import gallery from "../assets/gallery.svg";
+import paynow from "../assets/paynow.svg";
+import registrations from "../assets/registrations.svg";
+import watchlive from "../assets/watchlive.svg";
+import searchIcon from "../assets/search.svg";
 
 import dove from "../assets/dove.png";
 import banner from "../assets/banner.png";
@@ -130,16 +139,16 @@ function HomeMain() {
               }}
             >
               <img
-                src={
-                  user.profile.trim().length > 0
-                    ? IP + "/" + user.profile
-                    : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
-                }
+                // src={
+                //   user.profile.trim().length > 0
+                //     ? IP + "/" + user.profile
+                //     : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                // }
               />
             </IonAvatar>
           </div>
           <div className="HomeSearch">
-            {/* <IonIcon slot="icon" icon={searchCircle} /> */}
+            <IonIcon slot="icon" icon={searchIcon}/>
             <IonInput placeholder="  Search" />
           </div>
           <div>
@@ -193,8 +202,8 @@ function HomeMain() {
               <IonCol>
                 <IonCard button routerLink="/Main/Home/Tab2">
                   <IonCardContent>
-                    <div className="mainIcon">
-                      <IonIcon color="danger" icon={timer} />
+                    <div className="mainIcon ">
+                      <IonIcon color="danger" icon={explore} />
                     </div>
                     <div>Explore updates</div>
                   </IonCardContent>
@@ -204,7 +213,7 @@ function HomeMain() {
                 <IonCard button routerLink="/Main/Home/Event">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={calendar} />
+                      <IonIcon color="danger" icon={events} />
                     </div>
                     <div>Events</div>
                   </IonCardContent>
@@ -216,7 +225,7 @@ function HomeMain() {
                 <IonCard button>
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={videocam} />
+                      <IonIcon color="danger" icon={watchlive} />
                     </div>
                     <div>Watch Live</div>
                   </IonCardContent>
@@ -226,7 +235,7 @@ function HomeMain() {
                 <IonCard button routerLink="/Main/Home/ActivitiesRegistration">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={newspaper} />
+                      <IonIcon color="danger" icon={registrations} />
                     </div>
                     <div>Registrations</div>
                   </IonCardContent>
@@ -238,7 +247,7 @@ function HomeMain() {
                 <IonCard button>
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={cash} />
+                      <IonIcon color="danger" icon={paynow} />
                     </div>
                     <div>Pay Online</div>
                   </IonCardContent>
@@ -248,7 +257,7 @@ function HomeMain() {
                 <IonCard button routerLink="/Main/Home/BusinessLounge">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={business} />
+                      <IonIcon color="danger" icon={businesss} />
                     </div>
                     <div>Business Lounge</div>
                   </IonCardContent>
@@ -260,7 +269,7 @@ function HomeMain() {
                 <IonCard button routerLink="/Main/Home/Gallery">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={images} />
+                      <IonIcon color="danger" icon={gallery} />
                     </div>
                     <div>Gallery</div>
                   </IonCardContent>
