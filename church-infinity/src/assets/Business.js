@@ -12,7 +12,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 
-function BusinessLounge() {
+function Business() {
   return (
     <IonPage>
       <IonHeader>
@@ -35,4 +35,4 @@ function BusinessLounge() {
   );
 }
 
-export default BusinessLounge;
+export default Business;

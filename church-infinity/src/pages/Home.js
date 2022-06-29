@@ -27,6 +27,7 @@ import Chat from "./Chat";
 import Event from "./Event";
 import Profile from "./Profile";
 import BusinessLounge from "./BusinessLounge";
+import Business from "./Business";
 import ActivitiesRegistration from "./ActivitiesRegistration";
 import ProfileUpdate from "./ProfileUpdate";
 import Groups from "./Groups";
@@ -35,6 +36,7 @@ import CampaignRegistration from "./CampaignsRegistration";
 import DepartmentsRegistration from "./DepartmentsRegistration";
 import SacramentsRegistration from "./SacramentsRegistration";
 import MinInstitutionsRegistration from "./MinInstitutionsRegistration";
+import WatchLive from "./WatchLive";
 
 function Home() {
   return (
@@ -61,8 +63,16 @@ function Home() {
           <Profile />
         </Route>
 
+        <Route exact path="/Main/Home/WatchLive">
+          <WatchLive />
+        </Route>
+
         <Route exact path="/Main/Home/BusinessLounge">
           <BusinessLounge />
+        </Route>
+        
+        <Route exact path="/Main/Home/BusinessLounge/Business1">
+          <Business />
         </Route>
 
         <Route exact path="/Main/Home/ActivitiesRegistration">
