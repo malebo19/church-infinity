@@ -2,6 +2,8 @@ import React from "react";
 import {
   IonBackButton,
   IonButtons,
+  IonCard,
+  IonCardContent,
   IonContent,
   IonHeader,
   IonPage,
@@ -16,7 +18,7 @@ function ActivitiesRegistration() {
       <IonHeader>
         <IonToolbar>
           <IonButtons>
-            <IonBackButton />
+            <IonBackButton defaultHref="/login"/>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -24,10 +26,14 @@ function ActivitiesRegistration() {
         <div className="middle">
           <div className="types">
             <h1>Select Types of Registration</h1>
-            <div className="type-button">Activities & Campaigns</div>
-            <div className="type-button">Departments</div>
-            <div className="type-button">Ministry institutions</div>
-            <div className="type-button">Sacrements</div>
+            <IonCard className="cardbutton" routerLink="/Main/Home/ActivitiesRegistration/Campaigns">
+              <IonCardContent className="type-button activityReg">Activities & Campaigns</IonCardContent></IonCard>
+            <IonCard className="cardbutton" routerLink="/Main/Home/ActivitiesRegistration/Departments">
+              <IonCardContent className="type-button activityReg">Departments</IonCardContent></IonCard>
+            <IonCard className="cardbutton" routerLink="/Main/Home/ActivitiesRegistration/MinistryInstitutions">
+              <IonCardContent className="type-button activityReg">Ministry Institutions</IonCardContent></IonCard>
+            <IonCard className="cardbutton" routerLink="/Main/Home/ActivitiesRegistration/Sacraments">
+              <IonCardContent className="type-button activityReg">Sacrements</IonCardContent></IonCard>
           </div>
         </div>
       </IonContent>
