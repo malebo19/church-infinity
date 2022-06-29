@@ -21,6 +21,8 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import firebase from "firebase/app";
+
 import {
   chatbubble,
   document,
@@ -34,14 +36,43 @@ import Kenan from "../assets/Kenan.jpeg";
 import dove from "../assets/dove.png";
 import banner from "../assets/banner.png";
 import testimony from "../assets/testimony.png";
+import ReactTimeAgo from "react-time-ago";
+
 import GetPosts from "../services/GetPosts";
 import { UserContext } from "../App";
 import { IP } from "../services/config";
 
+import CreatePosts from "../services/CreatePosts";
+
 function Update() {
+  const db = firebase.firestore();
+  const churchRef = firebase.firestore().collection("church");
   const [postModal, setPostModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const { user, setUser } = useContext(UserContext);
+  const [content, setContent] = useState("");
+  const [attachment, setAttachment] = useState("");
+
+  const newPostHandler = () => {
+    var form_data = new FormData();
+    var date = new Date();
+    var data = {
+      user_id: user.id,
+      content: content,
+      time: date,
+      attachment: attachment,
+    };
+
+    Object.keys(data).map((key) => {
+      form_data.append(key, data[key]);
+    });
+    console.log(data);
+
+    CreatePosts(form_data);
+    setPostModal(false);
+    churchRef.add({ Kenan: "Name" });
+  };
+
   useEffect(() => {
     GetPosts().done((res) => {
       console.log(res);
@@ -67,18 +98,25 @@ function Update() {
         <IonContent>
           <IonCard>
             <IonCardContent>
-              <IonTextarea placeholder="What's on your mind?"></IonTextarea>
+              <IonTextarea
+                value={content}
+                placeholder="What's on your mind?"
+                onIonChange={(e) => setContent(e.target.value)}
+              ></IonTextarea>
             </IonCardContent>
           </IonCard>
           <IonGrid>
             <IonRow>
               <IonCol>
-                <IonInput type="file" />
+                <input
+                  type="file"
+                  onChange={(e) => setAttachment(e.target.files[0])}
+                />
               </IonCol>
             </IonRow>
             <IonRow>
               <IonCol>
-                <IonButton expand="block" onClick={() => setPostModal(false)}>
+                <IonButton expand="block" onClick={newPostHandler}>
                   Post
                 </IonButton>
               </IonCol>
@@ -102,6 +140,7 @@ function Update() {
           </div>
           <IonGrid>
             <h4 style={{ marginLeft: "20px" }}>Latest Messages</h4>
+
             {posts.map((post) => (
               <IonRow key={post.id}>
                 <IonCol>
@@ -111,18 +150,25 @@ function Update() {
                         <div className="post-header">
                           <div>
                             <IonAvatar>
-                              <img src={post.document.trim().length > 0 ? IP + "/" + post.document : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg" } />
+                              <img
+                                src={
+                                  post.profile?.trim().length > 0
+                                    ? IP + "/" + post.document
+                                    : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                                }
+                              />
                             </IonAvatar>
                           </div>
                           <div>
                             <h3>{post.username}</h3>
-                            <p>12 mins ago</p>
+                            <ReactTimeAgo date={post.time} locale="en-US" />
                           </div>
                         </div>
                         <div className="post-content">
-                          <p>
-                            {post.content}
-                          </p>
+                          <p>{post.content}</p>
+                          {post.document?.trim().length > 0 && (
+                            <img src={IP + "/" + post.document} />
+                          )}
                         </div>
                         <div className="post-footer">
                           <div className="footer-likes">
@@ -140,7 +186,6 @@ function Update() {
                 </IonCol>
               </IonRow>
             ))}
-            
           </IonGrid>
         </div>
       </IonContent>

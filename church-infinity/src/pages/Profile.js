@@ -85,7 +85,7 @@ function Profile() {
                     <div className="profile-card">
                       <div className="profile-card-avatar">
                         <IonAvatar>
-                          <img src={user.profile.trim().length > 0 ? IP+ "/" + user.profile : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"  } />
+                          <img src={user.profile?.trim()?.length > 0 ? IP+ "/" + user?.profile : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"  } />
                         </IonAvatar>
                         <div
                           style={{

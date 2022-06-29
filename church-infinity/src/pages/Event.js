@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   IonBackButton,
   IonButton,
@@ -14,8 +14,21 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import event from "../assets/event.png";
+import { UserContext } from "../App";
+
 import { time } from "ionicons/icons";
+import GetEvents from "../services/GetEvents";
 function Event() {
+  useEffect(() => {
+    const data = {
+      used_id: user.id,
+    };
+    GetEvents(data).done((res) => {
+      console.log(res);
+    });
+  }, []);
+
+  const { user, setUser } = useContext(UserContext);
   return (
     <IonPage>
       <IonHeader>
@@ -60,7 +73,8 @@ function Event() {
             className="ion-align-items-center "
           >
             <IonCol>
-              Rhapsody of Realities<br />
+              Rhapsody of Realities
+              <br />
               10:00 - 10:30 <IonIcon color="primary" icon={time} />
             </IonCol>
             <IonCol className="ion-text-center">
@@ -78,7 +92,8 @@ function Event() {
             className="ion-align-items-center "
           >
             <IonCol>
-              Global Communion Service<br />
+              Global Communion Service
+              <br />
               10:00 - 10:30 <IonIcon color="primary" icon={time} />
             </IonCol>
             <IonCol className="ion-text-center">
