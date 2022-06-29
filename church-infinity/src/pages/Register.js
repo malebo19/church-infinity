@@ -244,7 +244,7 @@ function Register() {
                 </IonRow>
               </div>
 
-              <p>Are new to Local Church (less than 2 months) ?</p>
+              <p>Are you new to Local Church (less than 2 months) ?</p>
               <IonRadioGroup
                 value={newMember}
                 onIonChange={(e) => setNewMember(e.target.value)}
