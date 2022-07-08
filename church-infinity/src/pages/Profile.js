@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import {
@@ -29,7 +29,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { UserContext } from "../App";
-
+import UpdateProfile from "../services/UpdateProfile";
 import "./Profile.css";
 import {
   logOut,
@@ -44,15 +44,26 @@ import {
   personOutline,
 } from "ionicons/icons";
 import { IP } from "../services/config";
+import Update from "./Update";
 // import { getAuth, signOut } from "firebase/auth";
 
-const darkModeHandler = (ev) => {
-  // toggle a classlist of the body element
-  document.body.classList.toggle("dark");
-  console.log("darkModeHandler", ev);
-};
 function Profile() {
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    console.log(localStorage.getItem("dark"));
+    if (localStorage.getItem("dark") === "true") {
+      setDarkMode(true);
+      document.body.classList.add("dark");
+    }else{
+      setDarkMode(false);
+      document.body.classList.remove("dark");
+    }
+  }, []);
+
+  const fileRef = useRef(null);
+
   let history = useHistory();
+  const [attachment, setAttachment] = useState("");
   // const auth = getAuth();
 
   const { user, setUser } = useContext(UserContext);
@@ -63,7 +74,40 @@ function Profile() {
     setUser(null);
     // history.push("/login");
   };
+  const profileChangerHandler = (e) => {
+    setAttachment(e.target.files[0]);
+    // console.log(attachment);
+    console.log(e.target.files);
+    var form_data = new FormData();
 
+    var data = {
+      user_id: user.id,
+      attachment: attachment,
+    };
+
+    Object.keys(data).map((key) => {
+      form_data.append(key, data[key]);
+    });
+    if (attachment) {
+      console.log(attachment);
+      UpdateProfile(form_data);
+    }
+    // setAttachment("");
+  };
+  const darkModeHandler = (ev) => {
+    if (ev.target.checked) {
+      setDarkMode(true);
+      localStorage.setItem("dark", true);
+      document.body.classList.add("dark");
+      console.log(localStorage.getItem("dark"));
+    } else {
+      setDarkMode(false);
+      localStorage.setItem("dark", false);
+      document.body.classList.remove("dark");
+      console.log(localStorage.getItem("dark"));
+    }
+    console.log("darkModeHandler", ev);
+  };
   return (
     <IonPage>
       <IonHeader>
@@ -82,10 +126,22 @@ function Profile() {
               <IonCol>
                 <IonCard color="primary">
                   <IonCardContent>
+                    <input
+                      type="file"
+                      ref={fileRef}
+                      style={{ display: "none" }}
+                      onChange={profileChangerHandler}
+                    />
                     <div className="profile-card">
                       <div className="profile-card-avatar">
-                        <IonAvatar>
-                          <img src={user.profile?.trim()?.length > 0 ? IP+ "/" + user?.profile : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"  } />
+                        <IonAvatar onClick={() => fileRef.current.click()}>
+                          <img
+                            src={
+                              user.profile?.trim()?.length > 0
+                                ? IP + "/" + user?.profile
+                                : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                            }
+                          />
                         </IonAvatar>
                         <div
                           style={{
@@ -99,7 +155,11 @@ function Profile() {
                         </div>
                       </div>
                       <div>
-                        <IonIcon size="large" icon={pencil} />
+                        <IonIcon
+                          onClick={() => fileRef.current.click()}
+                          size="large"
+                          icon={pencil}
+                        />
                       </div>
                     </div>
                   </IonCardContent>
@@ -153,6 +213,7 @@ function Profile() {
                         />
                         <IonLabel>Dark Mode</IonLabel>
                         <IonToggle
+                          checked={darkMode}
                           onIonChange={darkModeHandler}
                           slot="end"
                         ></IonToggle>

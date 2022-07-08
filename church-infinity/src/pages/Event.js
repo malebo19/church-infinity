@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   IonBackButton,
   IonButton,
@@ -15,10 +15,18 @@ import {
 } from "@ionic/react";
 import event from "../assets/event.png";
 import { UserContext } from "../App";
+import { css } from "@emotion/react";
+import SyncLoader from "react-spinners/SyncLoader";
 
 import { time } from "ionicons/icons";
 import GetEvents from "../services/GetEvents";
 function Event() {
+  const [loading, setLoading] = useState(true);
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
   useEffect(() => {
     const data = {
       used_id: user.id,
@@ -40,6 +48,7 @@ function Event() {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+ 
         <IonGrid>
           <IonRow>
             <IonCol>

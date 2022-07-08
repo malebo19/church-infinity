@@ -17,6 +17,8 @@ import {
   IonToolbar,
 } from "@ionic/react";
 // import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from 'react-toastify';
+
 import { useHistory } from "react-router-dom";
 
 import { lockClosed, mail } from "ionicons/icons";
@@ -48,6 +50,7 @@ const Login = () => {
         history.push("/home");
         localStorage.setItem("user", JSON.stringify(res.data));
         setUser(res.data);
+        toast.success("Login Successful");
 
         
       }else{
