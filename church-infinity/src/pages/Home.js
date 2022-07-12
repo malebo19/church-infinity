@@ -26,8 +26,13 @@ import Update from "./Update";
 import Chat from "./Chat";
 import Event from "./Event";
 import Profile from "./Profile";
+import WatchLive from "./WatchLive";
 import BusinessLounge from "./BusinessLounge";
+<<<<<<< Updated upstream
 import Business from "./Business";
+=======
+import BusinessInfo from "./BusinessInfo";
+>>>>>>> Stashed changes
 import ActivitiesRegistration from "./ActivitiesRegistration";
 import ProfileUpdate from "./ProfileUpdate";
 import Groups from "./Groups";
@@ -62,6 +67,10 @@ function Home() {
         <Route exact path="/Main/Home/Profile">
           <Profile />
         </Route>
+        
+        <Route exact path="/Main/Home/WatchLive">
+          <WatchLive />
+        </Route>
 
         <Route exact path="/Main/Home/WatchLive">
           <WatchLive />
@@ -71,8 +80,13 @@ function Home() {
           <BusinessLounge />
         </Route>
         
+<<<<<<< Updated upstream
         <Route exact path="/Main/Home/BusinessLounge/Business1">
           <Business />
+=======
+        <Route exact path="/Main/Home/BusinessLounge/Business">
+          <BusinessInfo />
+>>>>>>> Stashed changes
         </Route>
 
         <Route exact path="/Main/Home/ActivitiesRegistration">
