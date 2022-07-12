@@ -4,11 +4,8 @@ import {
   IonButtons,
   IonContent,
   IonGrid,
-<<<<<<< Updated upstream
-=======
   IonSlides,
   IonSlide,
->>>>>>> Stashed changes
   IonHeader,
   IonLabel,
   IonPage,
@@ -40,14 +37,6 @@ function BusinessLounge() {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-<<<<<<< Updated upstream
-        <h1>Business Lounge</h1>
-        <IonGrid>
-          <IonRow>
-
-          </IonRow>
-        </IonGrid>
-=======
       
       <IonLabel color="primary"
         style={{
@@ -119,7 +108,6 @@ function BusinessLounge() {
           </IonSlide>
           
         </IonSlides> 
->>>>>>> Stashed changes
       </IonContent>
     </IonPage>
   );
