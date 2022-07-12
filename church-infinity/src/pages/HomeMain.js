@@ -142,7 +142,7 @@ function HomeMain() {
             >
               <img
                 src={
-                  user?.profile?.trim()?.length > 0
+                  user.profile?.trim()?.length > 0
                     ? IP + "/" + user?.profile
                     : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
                 }
@@ -229,7 +229,7 @@ function HomeMain() {
             </IonRow>
             <IonRow className="ion-text-center">
               <IonCol>
-                <IonCard button>
+                <IonCard button routerLink="/Main/Home/WatchLive">
                   <IonCardContent>
                     <div className="mainIcon">
                       <IonIcon color="danger" icon={watchlive} />
