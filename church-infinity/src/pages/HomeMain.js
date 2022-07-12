@@ -69,6 +69,7 @@ function HomeMain() {
   const [news, setNews] = useState([]);
   const [newsModalData, setNewsModalData] = useState({});
   const [testimonies, setTestimonies] = useState([]);
+
   let history = useHistory();
 
   const slideOpts = {
@@ -125,8 +126,9 @@ function HomeMain() {
           </IonCard>
         </IonContent>
       </IonModal>
+
       <IonContent>
-        <h1>{user.username}</h1>
+        {/* <h1>{user.username}</h1> */}
         <div className="dove">
           <img src={dove} />
         </div>
@@ -148,7 +150,11 @@ function HomeMain() {
             </IonAvatar>
           </div>
           <div className="HomeSearch">
-            <IonIcon slot="icon" icon={searchIcon}/>
+            <IonIcon
+              style={{ padding: "10px" }}
+              slot="icon"
+              icon={searchIcon}
+            />
             <IonInput placeholder="  Search" />
           </div>
           <div>
@@ -174,6 +180,7 @@ function HomeMain() {
                       objectFit: "cover",
                     }}
                     src={IP + "/" + item.document}
+                    // src={item.document}
                   />
                   <h2 style={{ fontWeight: "bold" }}>{item.title}</h2>{" "}
                   {item.content.substring(0, 30) + "..."}

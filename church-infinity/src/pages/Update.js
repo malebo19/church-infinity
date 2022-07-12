@@ -36,11 +36,14 @@ import Kenan from "../assets/Kenan.jpeg";
 import dove from "../assets/dove.png";
 import banner from "../assets/banner.png";
 import testimony from "../assets/testimony.png";
+import SyncLoader from "react-spinners/SyncLoader";
+
 import ReactTimeAgo from "react-time-ago";
 
 import GetPosts from "../services/GetPosts";
 import { UserContext } from "../App";
 import { IP } from "../services/config";
+import { css } from "@emotion/react";
 
 import CreatePosts from "../services/CreatePosts";
 
@@ -51,11 +54,24 @@ function Update() {
   const [posts, setPosts] = useState([]);
   const { user, setUser } = useContext(UserContext);
   const [content, setContent] = useState("");
-  const [attachment, setAttachment] = useState("");
+  const [attachment, setAttachment] = useState();
+  const [loading, setLoading] = useState(true);
+  const [reload, setReload] = useState(Math.random());
+  console.log(reload);
+
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
 
   const newPostHandler = () => {
+    setReload(Math.random());
+    console.log(reload);
     var form_data = new FormData();
+    // convert to int
     var date = new Date();
+
     var data = {
       user_id: user.id,
       content: content,
@@ -70,15 +86,22 @@ function Update() {
 
     CreatePosts(form_data);
     setPostModal(false);
-    churchRef.add({ Kenan: "Name" });
+    // churchRef.add({ Kenan: "Name" });
+    // console.log("post created");
   };
 
+
+  
   useEffect(() => {
+    // churchRef.onSnapshot(function (snapshot) {
     GetPosts().done((res) => {
       console.log(res);
       setPosts(res.data);
+      setLoading(false);
     });
-  }, []);
+    // });
+  }, [reload]);
+
   return (
     <IonPage>
       <IonHeader>
@@ -130,6 +153,23 @@ function Update() {
         </IonContent>
       </IonModal>
       <IonContent fullscreen>
+        {loading && (
+          <IonGrid>
+            <IonRow
+              style={{ height: "90vh" }}
+              className="ion-align-items-center ion-justify-content-center"
+            >
+              <IonCol className="ion-text-center">
+                <SyncLoader
+                  loading={loading}
+                  css={override}
+                  color="blue"
+                  size={35}
+                />
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        )}
         <div className="Update">
           <div className="new-post-container">
             <div className="new-post" onClick={() => setPostModal(true)}>
@@ -153,14 +193,16 @@ function Update() {
                               <img
                                 src={
                                   post.profile?.trim().length > 0
-                                    ? IP + "/" + post.document
+                                    ? IP + "/" + post.profile
                                     : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
                                 }
                               />
                             </IonAvatar>
                           </div>
                           <div>
-                            <h3>{post.username}</h3>
+                            <h3>
+                              <b>{post.username}</b>
+                            </h3>
                             <ReactTimeAgo date={post.time} locale="en-US" />
                           </div>
                         </div>

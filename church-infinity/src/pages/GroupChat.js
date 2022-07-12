@@ -28,6 +28,7 @@ import SendMessage from "../services/SendMessage";
 import { IP } from "../services/config";
 
 function GroupChat() {
+  const myRef = useRef(null);
   const db = firebase.firestore();
   const churchRef = firebase.firestore().collection("church");
 
@@ -37,6 +38,7 @@ function GroupChat() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [attachment, setAttachment] = useState(null);
+  const [reload, setReload] = useState(Math.random());
   const override = css`
     display: block;
     margin: 0 auto;
@@ -44,6 +46,9 @@ function GroupChat() {
   `;
   const [loading, setLoading] = useState(true);
   const sendMessageHandler = () => {
+    setReload(Math.random());
+    console.log(reload);
+    console.log(reload);
     var form_data = new FormData();
     var data = {
       user_id: user.id,
@@ -58,39 +63,33 @@ function GroupChat() {
     });
 
     SendMessage(form_data);
-    churchRef.add({ Kenan: "Name" });
+    myRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
   };
+  useEffect(() => {
+    myRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  });
 
   var data = {
     user_id: user.id,
     group_id: groupID,
   };
   useEffect(() => {
-    churchRef.onSnapshot(function (snapshot) {
-      GetMessages(data).done((res) => {
-        // console.log(res);
-        setMessages(res.data);
-        console.log(messages);
-        console.log(res.data);
-        setLoading(false);
-      });
-
-      // if (res.status === true) {
-      //   history.push("/home");
-      //   localStorage.setItem("user", JSON.stringify(res.data));
-      //   setUser(res.data);
-      // } else {
-      //   setError(true);
-      //   console.log(res.message);
-      // }
-      // if (res.status === 200) {
-      //   setUser(res.data);
-      //   history.push("/home");
-      // } else {
-      //   setError(true);
-      // }
+    // churchRef.onSnapshot(function (snapshot) {
+    GetMessages(data).done((res) => {
+      // console.log(res);
+      setMessages(res.data);
+      console.log(messages);
+      console.log(res.data);
+      setLoading(false);
+      // });
     });
-  }, []);
+  }, [reload]);
 
   return (
     <IonPage>
@@ -179,7 +178,7 @@ function GroupChat() {
             </IonCol>
           </IonRow>
         </IonGrid>
-
+        <div ref={myRef}></div>
         {/* {messages.length > 0 ? JSON.stringify(messages) : <h1>No messages</h1>} */}
       </IonContent>
       {/* <div id="scroll" style={{ marginTop: "150px", paddingTop: "20px" }}></div> */}
