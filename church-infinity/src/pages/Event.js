@@ -20,8 +20,10 @@ import SyncLoader from "react-spinners/SyncLoader";
 
 import { time } from "ionicons/icons";
 import GetEvents from "../services/GetEvents";
+import { IP } from "../services/config";
 function Event() {
   const [loading, setLoading] = useState(true);
+  const [events, setEvents] = useState([]);
   const override = css`
     display: block;
     margin: 0 auto;
@@ -32,7 +34,7 @@ function Event() {
       used_id: user.id,
     };
     GetEvents(data).done((res) => {
-      console.log(res);
+      setEvents(res.data);
     });
   }, []);
 
@@ -48,9 +50,35 @@ function Event() {
         </IonToolbar>
       </IonHeader>
       <IonContent>
- 
         <IonGrid>
-          <IonRow>
+          {events.map((event) => (
+            <div>
+              <IonRow key={event.id}>
+                <IonCol>
+                  <img src={IP + "/" + event.document} />
+                </IonCol>
+              </IonRow>
+             
+              <IonRow
+                style={{
+                  borderTop: "1px solid lightblue",
+                  borderBottom: "1px solid lightblue",
+                  padding: "7px",
+                }}
+                className="ion-align-items-center "
+              >
+                <IonCol>
+                  {event.title} <br />
+                  {event.content} <br/>
+                  {event.time} <IonIcon color="primary" icon={time} />
+                </IonCol>
+                <IonCol className="ion-text-center">
+                  <IonButton size="small">Open</IonButton>
+                </IonCol>
+              </IonRow>
+            </div>
+          ))}
+          {/* <IonRow>
             <IonCol>
               <img src={event} />
             </IonCol>
@@ -108,7 +136,7 @@ function Event() {
             <IonCol className="ion-text-center">
               <IonButton size="small">Open</IonButton>
             </IonCol>
-          </IonRow>
+          </IonRow> */}
         </IonGrid>
       </IonContent>
     </IonPage>

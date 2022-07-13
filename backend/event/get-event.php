@@ -2,7 +2,7 @@
 
 
 
-$sql = "SELECT * FROM `event`";
+$sql = "SELECT * FROM `event` ORDER BY `event`.`event_id` DESC";
 $data=[];
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result)>0) {

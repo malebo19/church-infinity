@@ -16,6 +16,8 @@ import {
   IonLabel,
   IonModal,
   IonPage,
+  IonRefresher,
+  IonRefresherContent,
   IonRow,
   IonTextarea,
   IonTitle,
@@ -65,6 +67,14 @@ function Update() {
     border-color: red;
   `;
 
+  const doRefresh = (event) => {
+    setReload(Math.random());
+
+    setTimeout(() => {
+      console.log("Async operation has ended");
+      event.detail.complete();
+    }, 1000);
+  };
   const newPostHandler = () => {
     setReload(Math.random());
     console.log(reload);
@@ -90,8 +100,6 @@ function Update() {
     // console.log("post created");
   };
 
-
-  
   useEffect(() => {
     // churchRef.onSnapshot(function (snapshot) {
     GetPosts().done((res) => {
@@ -153,6 +161,11 @@ function Update() {
         </IonContent>
       </IonModal>
       <IonContent fullscreen>
+        <div>
+          <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+            <IonRefresherContent></IonRefresherContent>
+          </IonRefresher>
+        </div>
         {loading && (
           <IonGrid>
             <IonRow

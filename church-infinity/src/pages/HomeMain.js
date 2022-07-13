@@ -21,6 +21,8 @@ import {
   IonSlides,
   IonTitle,
   IonToolbar,
+  IonRefresher,
+  IonRefresherContent,
 } from "@ionic/react";
 import { css } from "@emotion/react";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
@@ -69,11 +71,12 @@ function HomeMain() {
   const [news, setNews] = useState([]);
   const [newsModalData, setNewsModalData] = useState({});
   const [testimonies, setTestimonies] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   let history = useHistory();
 
   const slideOpts = {
-    initialSlide: 0,
+    initialSlide: 1,
     speed: 400,
   };
 
@@ -100,6 +103,58 @@ function HomeMain() {
     margin: 0 auto;
     border-color: red;
   `;
+  function doRefresh(event) {
+    console.log("Begin async operation");
+    GetNews().done((res) => {
+      // add the new data to the front of the list
+      setNews((prev) => {
+        var new_data = res.data.filter((item) => {
+          return !prev.find((i) => i.id === item.id);
+        });
+        console.log(new_data);
+        if (new_data.length > 0) {
+          new_data.forEach((item) => {
+            prev.push(item);
+            return [...prev];
+          });
+        } else {
+          console.log("No new data");
+        }
+        console.log(prev);
+        return [...prev];
+      });
+    });
+
+    GetTestimonies().done((res) => {
+      // add the new data to the front of the list
+      setTestimonies((prev) => {
+        var new_data = res.data.filter((item) => {
+          return !prev.find((i) => i.id === item.id);
+        });
+        console.log(new_data);
+        if (new_data.length > 0) {
+          new_data.forEach((item) => {
+            prev.push(item);
+            return [...prev];
+          });
+        } else {
+          console.log("No new data");
+        }
+        console.log(prev);
+        return [...prev];
+      });
+    });
+
+    // GetTestimonies().done((res) => {
+    //   console.log(res.data);
+    //   setTestimonies(res.data);
+    // });
+
+    setTimeout(() => {
+      console.log("Async operation has ended");
+      event.detail.complete();
+    }, 1000);
+  }
 
   return (
     <IonPage>
@@ -128,6 +183,11 @@ function HomeMain() {
       </IonModal>
 
       <IonContent>
+        <div>
+          <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+            <IonRefresherContent></IonRefresherContent>
+          </IonRefresher>
+        </div>
         {/* <h1>{user.username}</h1> */}
         <div className="dove">
           <img src={dove} />
@@ -190,6 +250,15 @@ function HomeMain() {
             </IonSlide>
           ))}
         </IonSlides>
+        {news.length < 1 && (
+          <IonCard>
+            <IonCardContent className="ion-text-center">
+              <IonCardHeader>
+                <IonCardTitle>No News</IonCardTitle>
+              </IonCardHeader>
+            </IonCardContent>
+          </IonCard>
+        )}
 
         {/* <IonCard button onClick={() => sethomeModal(true)}>
           <IonCardContent>
@@ -313,6 +382,15 @@ function HomeMain() {
                 </IonSlide>
               ))}
             </IonSlides>
+            {testimonies.length < 1 && (
+              <IonCard>
+                <IonCardContent className="ion-text-center">
+                  <IonCardHeader>
+                    <IonCardTitle>No Testimonies</IonCardTitle>
+                  </IonCardHeader>
+                </IonCardContent>
+              </IonCard>
+            )}
             {/* <IonSlides pager={true} options={slideOpts}>
               <IonSlide>
                 <IonCard button className="ion-text-center">
