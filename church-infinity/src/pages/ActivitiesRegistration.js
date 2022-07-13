@@ -33,7 +33,7 @@ function ActivitiesRegistration() {
             <IonCard className="cardbutton" routerLink="/Main/Home/ActivitiesRegistration/MinistryInstitutions">
               <IonCardContent className="type-button activityReg">Ministry Institutions</IonCardContent></IonCard>
             <IonCard className="cardbutton" routerLink="/Main/Home/ActivitiesRegistration/Sacraments">
-              <IonCardContent className="type-button activityReg">Sacrements</IonCardContent></IonCard>
+              <IonCardContent className="type-button activityReg">Sacraments</IonCardContent></IonCard>
           </div>
         </div>
       </IonContent>
