@@ -28,7 +28,6 @@ import Event from "./Event";
 import Profile from "./Profile";
 import WatchLive from "./WatchLive";
 import BusinessLounge from "./BusinessLounge";
-// import Business from "./Business";
 import BusinessInfo from "./BusinessInfo";
 import ActivitiesRegistration from "./ActivitiesRegistration";
 import ProfileUpdate from "./ProfileUpdate";
