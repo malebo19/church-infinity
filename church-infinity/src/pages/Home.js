@@ -21,8 +21,11 @@ import Event from "./Event";
 import Profile from "./Profile";
 import WatchLive from "./WatchLive";
 import BusinessLounge from "./BusinessLounge";
-// import Business from "./Business";
+<<<<<<< Updated upstream
+import Business from "./Business";
+=======
 import BusinessInfo from "./BusinessInfo";
+>>>>>>> Stashed changes
 import ActivitiesRegistration from "./ActivitiesRegistration";
 import ProfileUpdate from "./ProfileUpdate";
 import Groups from "./Groups";
@@ -70,9 +73,18 @@ function Home() {
         <Route exact path="/Main/Home/BusinessLounge">
           <BusinessLounge />
         </Route>
+<<<<<<< HEAD
 
+=======
+        
+<<<<<<< Updated upstream
+        <Route exact path="/Main/Home/BusinessLounge/Business1">
+          <Business />
+=======
+>>>>>>> parent of 8ea6227 (index)
         <Route exact path="/Main/Home/BusinessLounge/Business">
           <BusinessInfo />
+>>>>>>> Stashed changes
         </Route>
 
         <Route exact path="/Main/Home/ActivitiesRegistration">

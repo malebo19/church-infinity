@@ -13195,6 +13195,11 @@ fcViews.agendaWeek = {
 	duration: { weeks: 1 }
 };
 ;;
+<<<<<<< HEAD
 
 return FC; // export for Node/CommonJS
+=======
+
+return FC; // export for Node/CommonJS
+>>>>>>> parent of 8ea6227 (index)
 });

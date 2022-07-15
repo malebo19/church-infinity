@@ -108,6 +108,7 @@ $f3->route('POST /api/user/event/remove', function () {
     global $conn;
     include_once("event/delete-event.php");
 });
+<<<<<<< HEAD
 
 $f3->route('POST /api/create-comment', function () {
     global $conn;
@@ -119,6 +120,8 @@ $f3->route('POST /api/get-comment', function () {
     include_once("comment-post/get-comment.php");
 });
 
+=======
+>>>>>>> parent of 8ea6227 (index)
 //errors
 $f3->set('ONERROR', function ($f3) {
     print($f3["ERROR"]["text"]);
