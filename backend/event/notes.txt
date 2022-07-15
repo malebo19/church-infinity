@@ -1,0 +1,16 @@
+#remove a event
+/api/user/event/remove
+*user_id
+*event_id
+
+#create a event
+/api/user/event/create
+*user_id
+*content
+*time
+*attachment -> optional
+*title
+
+#get event 
+/api/user/event/get
+*user_id
