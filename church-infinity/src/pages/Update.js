@@ -48,6 +48,7 @@ import { IP } from "../services/config";
 import { css } from "@emotion/react";
 
 import CreatePosts from "../services/CreatePosts";
+import Comments from "./Comments";
 
 function Update() {
   const db = firebase.firestore();
@@ -59,6 +60,9 @@ function Update() {
   const [attachment, setAttachment] = useState();
   const [loading, setLoading] = useState(true);
   const [reload, setReload] = useState(Math.random());
+  const [commentModal, setCommentModal] = useState(false);
+  const [currentPost, setCurrentPost] = useState();
+
   console.log(reload);
 
   const override = css`
@@ -99,6 +103,10 @@ function Update() {
     // churchRef.add({ Kenan: "Name" });
     // console.log("post created");
   };
+  const CommentModalHandler = (post) => {
+    setCurrentPost(post);
+    setCommentModal(true);
+  };
 
   useEffect(() => {
     // churchRef.onSnapshot(function (snapshot) {
@@ -112,13 +120,19 @@ function Update() {
 
   return (
     <IonPage>
+      <Comments
+        commentModal={commentModal}
+        setCommentModal={setCommentModal}
+        currentPost={currentPost}
+      />
+
       <IonHeader>
-        <IonToolbar>
+        {/* <IonToolbar>
           <IonButtons slot="start">
             <IonBackButton />
           </IonButtons>
           <IonTitle>Updates</IonTitle>
-        </IonToolbar>
+        </IonToolbar> */}
       </IonHeader>
       <IonModal isOpen={postModal}>
         <IonHeader>
@@ -230,7 +244,10 @@ function Update() {
                             <IonIcon icon={heart} />
                             25 likes
                           </div>
-                          <div className="footer-comments">
+                          <div
+                            className="footer-comments"
+                            onClick={() => CommentModalHandler(post)}
+                          >
                             <IonIcon icon={chatbubble} />
                             13 comments
                           </div>

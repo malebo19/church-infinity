@@ -63,6 +63,7 @@ import "./HomeMain.css";
 import GetNews from "../services/GetNews";
 import GetTestimonies from "../services/GetTestimonies";
 import { IP } from "../services/config";
+import Comments from "./Comments";
 
 function HomeMain() {
   const { user, setUser } = useContext(UserContext);

@@ -1,5 +1,5 @@
 import React from "react";
-import {Player, ControlBar} from 'video-react';
+import { Player, ControlBar } from "video-react";
 
 import {
   IonBackButton,
@@ -14,28 +14,18 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
-  IonInput
+  IonInput,
+  IonButton,
 } from "@ionic/react";
-<<<<<<< Updated upstream
-import banner from "../assets/banner.png";
-import yh from "../assets/your_healing_loveworldsingers.mp4";
-import { time,eye } from "ionicons/icons";
-import "./WatchLive.css";
-
-function WatchLive() {
-  return (
-    <IonPage>
-
-=======
 import vid from "../assets/fire_for_your_future.mp4";
-import { arrowRedo, thumbsUp, send, time,heart } from "ionicons/icons";
-function Event() {
+import { arrowRedo, thumbsUp, send, time, heart } from "ionicons/icons";
+function WatchLive() {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/Main/Home/"/>
+            <IonBackButton defaultHref="/Main/Home/" />
           </IonButtons>
           <IonTitle>WatchLive</IonTitle>
         </IonToolbar>
@@ -48,49 +38,51 @@ function Event() {
                 border: "1px solid lightblue",
                 borderRadius: "10px",
                 padding: "0px",
-                
-              }}>
-              <video src={vid} width="100%" height="100%" controls autoPlay/>
+              }}
+            >
+              <video src={vid} width="100%" height="100%" controls autoPlay />
             </IonCol>
           </IonRow>
-          <h3 id="live_title">Pastor Chris:   Fire for your future </h3>
-          <IonRow
-            
-            className="ion-align-items-center "
-          >
+          <h3 id="live_title">Pastor Chris: Fire for your future </h3>
+          <IonRow className="ion-align-items-center ">
             <IonCol>
               <b>Church's Name</b> <br />
               is live now
             </IonCol>
             <IonCol className="ion-text-center">
-              <IonButton size="small"><IonIcon color="light" icon={arrowRedo}/>Share</IonButton>
+              <IonButton size="small">
+                <IonIcon color="light" icon={arrowRedo} />
+                Share
+              </IonButton>
             </IonCol>
           </IonRow>
           "A comment goes here"
           <IonRow>
-              <p className="comment">This is a comment</p>
-              <p className="comment">This is a comment</p>
-              <p className="comment">This is a comment</p>
-              <p className="comment">This is a comment</p>
-              <p className="comment">This is a comment</p>
-          
+            <p className="comment">This is a comment</p>
+            <p className="comment">This is a comment</p>
+            <p className="comment">This is a comment</p>
+            <p className="comment">This is a comment</p>
+            <p className="comment">This is a comment</p>
           </IonRow>
-          <IonRow
-            
-            className="ion-align-items-center "
-          >
+          <IonRow className="ion-align-items-center ">
             <IonCol>
-              <IonInput type="text" placeholder="Write a comment here"><IonIcon slot="end" color="light" icon={thumbsUp}/></IonInput>          </IonCol>
+              <IonInput type="text" placeholder="Write a comment here">
+                <IonIcon slot="end" color="light" icon={thumbsUp} />
+              </IonInput>{" "}
+            </IonCol>
             <IonCol className="ion-text-center">
               <IonRow>
-              <IonButton size="small"><IonIcon color="light" icon={thumbsUp}/></IonButton>
-              <IonButton size="small"><IonIcon color="light" icon={heart}/></IonButton>
+                <IonButton size="small">
+                  <IonIcon color="light" icon={thumbsUp} />
+                </IonButton>
+                <IonButton size="small">
+                  <IonIcon color="light" icon={heart} />
+                </IonButton>
               </IonRow>
             </IonCol>
           </IonRow>
         </IonGrid>
       </IonContent>
->>>>>>> Stashed changes
     </IonPage>
   );
 }

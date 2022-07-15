@@ -13,14 +13,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { Redirect, Route } from "react-router";
-import {
-  home,
-  ellipse,
-  square,
-  triangle,
-  timer,
-  chatbubble,
-} from "ionicons/icons";
+import { home, timer, chatbubble } from "ionicons/icons";
 import HomeMain from "./HomeMain";
 import Update from "./Update";
 import Chat from "./Chat";
@@ -38,7 +31,8 @@ import CampaignRegistration from "./CampaignsRegistration";
 import DepartmentsRegistration from "./DepartmentsRegistration";
 import SacramentsRegistration from "./SacramentsRegistration";
 import MinInstitutionsRegistration from "./MinInstitutionsRegistration";
-import WatchLive from "./WatchLive";
+import Comments from "./Comments";
+// import WatchLive from "./WatchLive";
 
 function Home() {
   return (
@@ -64,7 +58,7 @@ function Home() {
         <Route exact path="/Main/Home/Profile">
           <Profile />
         </Route>
-        
+
         <Route exact path="/Main/Home/WatchLive">
           <WatchLive />
         </Route>
@@ -76,7 +70,7 @@ function Home() {
         <Route exact path="/Main/Home/BusinessLounge">
           <BusinessLounge />
         </Route>
-        
+
         <Route exact path="/Main/Home/BusinessLounge/Business">
           <BusinessInfo />
         </Route>
@@ -93,7 +87,10 @@ function Home() {
           <DepartmentsRegistration />
         </Route>
 
-        <Route exact path="/Main/Home/ActivitiesRegistration/MinistryInstitutions">
+        <Route
+          exact
+          path="/Main/Home/ActivitiesRegistration/MinistryInstitutions"
+        >
           <MinInstitutionsRegistration />
         </Route>
 
@@ -112,7 +109,6 @@ function Home() {
         <Route exact path="/Main/Home/Gallery">
           <Gallery />
         </Route>
-      
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="tab1" href="/Main/Home/Tab1">
