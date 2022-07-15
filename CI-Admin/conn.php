@@ -1,14 +1,5 @@
 <?php 
 
-// // connect to sql
-// $conn = mysqli_connect("localhost", "root", "", "ci_admin");
-
-// // check connection
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
-
-
 $servername = "localhost";
 $username = "root";
 $password = "";
