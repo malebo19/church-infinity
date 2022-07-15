@@ -1,7 +1,0 @@
-{
-  "name": "church-infinity",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
