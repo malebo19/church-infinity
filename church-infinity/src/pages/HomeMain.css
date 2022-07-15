@@ -61,3 +61,16 @@ ion-card-content {
 .transparentToolbar{
   /* --border-color: 1px solid red; */
 }
+
+.explore{
+  /* Vector */
+
+    position: absolute;
+    left: 20.53%;
+    right: 67.39%;
+    top: 26.51%;
+    bottom: 70.74%;
+
+    background: linear-gradient(135deg, #81FFEF 0%, #F067B4 100%);
+
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   IonBackButton,
   IonButton,
@@ -14,8 +14,31 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import event from "../assets/event.png";
+import { UserContext } from "../App";
+import { css } from "@emotion/react";
+import SyncLoader from "react-spinners/SyncLoader";
+
 import { time } from "ionicons/icons";
+import GetEvents from "../services/GetEvents";
+import { IP } from "../services/config";
 function Event() {
+  const [loading, setLoading] = useState(true);
+  const [events, setEvents] = useState([]);
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
+  useEffect(() => {
+    const data = {
+      used_id: user.id,
+    };
+    GetEvents(data).done((res) => {
+      setEvents(res.data);
+    });
+  }, []);
+
+  const { user, setUser } = useContext(UserContext);
   return (
     <IonPage>
       <IonHeader>
@@ -28,7 +51,34 @@ function Event() {
       </IonHeader>
       <IonContent>
         <IonGrid>
-          <IonRow>
+          {events.map((event) => (
+            <div>
+              <IonRow key={event.id}>
+                <IonCol>
+                  <img src={IP + "/" + event.document} />
+                </IonCol>
+              </IonRow>
+             
+              <IonRow
+                style={{
+                  borderTop: "1px solid lightblue",
+                  borderBottom: "1px solid lightblue",
+                  padding: "7px",
+                }}
+                className="ion-align-items-center "
+              >
+                <IonCol>
+                  {event.title} <br />
+                  {event.content} <br/>
+                  {event.time} <IonIcon color="primary" icon={time} />
+                </IonCol>
+                <IonCol className="ion-text-center">
+                  <IonButton size="small">Open</IonButton>
+                </IonCol>
+              </IonRow>
+            </div>
+          ))}
+          {/* <IonRow>
             <IonCol>
               <img src={event} />
             </IonCol>
@@ -60,7 +110,8 @@ function Event() {
             className="ion-align-items-center "
           >
             <IonCol>
-              Rhapsody of Realities<br />
+              Rhapsody of Realities
+              <br />
               10:00 - 10:30 <IonIcon color="primary" icon={time} />
             </IonCol>
             <IonCol className="ion-text-center">
@@ -78,13 +129,14 @@ function Event() {
             className="ion-align-items-center "
           >
             <IonCol>
-              Global Communion Service<br />
+              Global Communion Service
+              <br />
               10:00 - 10:30 <IonIcon color="primary" icon={time} />
             </IonCol>
             <IonCol className="ion-text-center">
               <IonButton size="small">Open</IonButton>
             </IonCol>
-          </IonRow>
+          </IonRow> */}
         </IonGrid>
       </IonContent>
     </IonPage>

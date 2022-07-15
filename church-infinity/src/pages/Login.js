@@ -16,7 +16,9 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from 'react-toastify';
+
 import { useHistory } from "react-router-dom";
 
 import { lockClosed, mail } from "ionicons/icons";
@@ -32,7 +34,7 @@ const Login = () => {
   const { user, setUser } = useContext(UserContext);
   console.log(user);
 
-  const auth = getAuth();
+  // const auth = getAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -48,6 +50,7 @@ const Login = () => {
         history.push("/home");
         localStorage.setItem("user", JSON.stringify(res.data));
         setUser(res.data);
+        toast.success("Login Successful");
 
         
       }else{

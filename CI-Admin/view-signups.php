@@ -7,6 +7,7 @@ require_once("conn.php");
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,19 +15,19 @@ require_once("conn.php");
     <title>View Sign Ups</title>
 
     <!-- Styles -->
-    <link href="assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
-    <link href="assets/plugins/uniform/css/default.css" rel="stylesheet"/>
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet" />
+    <link href="assets/plugins/uniform/css/default.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="assets/css/custom.css">
 
     
@@ -64,19 +65,20 @@ require_once("conn.php");
                     </ol>
                 </div>
             </div>
-            <div id="main-wrapper">
-                <div class="row">
-                    <div class="col-md-12">
+        </div>
+        <div id="main-wrapper">
+            <div class="row">
+                <div class="col-md-12">
 
-                        <!-- Table One -->
-                        <div class="panel panel-white">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Activities & Campaigns</h4>
-                            </div>
-                            <div class="panel-body">
-                           <div class="table-responsive">
-                               <table id="example2" class="display table" style="width: 100%; cellspacing: 0;">
-                                   <thead>
+                    <!-- Table One -->
+                    <div class="panel panel-white">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Activities & Campaigns</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table id="example2" class="display table" style="width: 100%; cellspacing: 0;">
+                                    <thead>
                                         <tr>
                                             <th>Title</th>
                                             <th>Membership</th>
@@ -124,20 +126,20 @@ require_once("conn.php");
 
                                         ?>                                      
                                     </tbody>
-                               </table>
-                           </div>
+                                </table>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Table Two -->
-                        <div class="panel panel-white">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Departmental</h4>
-                            </div>
-                            <div class="panel-body">
-                           <div class="table-responsive">
-                               <table id="example2" class="display table" style="width: 100%; cellspacing: 0;">
-                                   <thead>
+                    <!-- Table Two -->
+                    <div class="panel panel-white">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Departmental</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table id="example2" class="display table" style="width: 100%; cellspacing: 0;">
+                                    <thead>
                                         <tr>
                                             <th>Title</th>
                                             <th>Membership</th>
@@ -182,20 +184,20 @@ require_once("conn.php");
 
                                     ?>                                      
                                     </tbody>
-                               </table>
-                           </div>
+                                </table>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Table Three -->
-                        <div class="panel panel-white">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Ministry</h4>
-                            </div>
-                            <div class="panel-body">
-                           <div class="table-responsive">
-                               <table id="example2" class="display table" style="width: 100%; cellspacing: 0;">
-                                   <thead>
+                    <!-- Table Three -->
+                    <div class="panel panel-white">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Ministry</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table id="example2" class="display table" style="width: 100%; cellspacing: 0;">
+                                    <thead>
                                         <tr>
                                             <th>Title</th>
                                             <th>Membership</th>
@@ -246,61 +248,51 @@ require_once("conn.php");
                         </div>
                      
 
-                        <!-- Add new row button -->
-                        <button type="button" class="btn btn-success m-b-sm" data-toggle="modal" data-target="#myModal">Add Form</button>
 
+                    <!-- Modal -->
+                    <form id="add-row-form" action="javascript:void(0);">
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
 
-                        
-                        <!-- Modal -->
-                        <form id="add-row-form" action="javascript:void(0);">
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            
-                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input type="text" id="name-input" class="form-control" placeholder="Name" required>
                                         </div>
-                                        
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <input type="text" id="name-input" class="form-control" placeholder="Name" required>
-                                            </div>
-                                                
-                                            <div class="form-group">
-                                                <input type="text" id="position-input" class="form-control" placeholder="Position" required>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <input type="number" id="age-input" class="form-control" placeholder="Age" required>
-                                            </div>
-                                               
-                                            <div class="form-group">
-                                                <input type="text" id="date-input" class="form-control date-picker" placeholder="Start Date" required>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <input type="number" id="salary-input" class="form-control" placeholder="Salary" required>
-                                            </div>
 
+                                        <div class="form-group">
+                                            <input type="text" id="position-input" class="form-control" placeholder="Position" required>
                                         </div>
-                                            
-                                        <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                <button type="submit" id="add-row" class="btn btn-success">Add</button>
+
+                                        <div class="form-group">
+                                            <input type="number" id="age-input" class="form-control" placeholder="Age" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" id="date-input" class="form-control date-picker" placeholder="Start Date" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="number" id="salary-input" class="form-control" placeholder="Salary" required>
                                         </div>
 
                                     </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" id="add-row" class="btn btn-success">Add</button>
+                                    </div>
+
                                 </div>
-                                </div>
-                                </form>
-                                
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </form>
 
             <!-- Footer -->
             <?php 
@@ -309,8 +301,16 @@ require_once("conn.php");
             
             ?>
         </div>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="page-footer">
+        <p class="no-s">Made with <i class="fa fa-heart"></i> by Church Infinity team</p>
+    </div>
+    </div>
     </main>
-    
+
 
 
     <!-- Javascripts -->
@@ -329,6 +329,11 @@ require_once("conn.php");
     <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="assets/js/meteor.min.js"></script>
     <script src="assets/js/pages/table-data.js"></script>
-    
+
 </body>
+
+
+
+
+
 </html>

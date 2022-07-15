@@ -21,18 +21,22 @@ import {
   IonSlides,
   IonTitle,
   IonToolbar,
+  IonRefresher,
+  IonRefresherContent,
 } from "@ionic/react";
+import { css } from "@emotion/react";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { useHistory } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import { Geolocation } from "@capacitor/geolocation";
 import {
-  add,
   buildOutline,
   business,
   calendar,
   calendarNumber,
   cash,
+  closeCircle,
   images,
   newspaper,
   notifications,
@@ -42,22 +46,49 @@ import {
 } from "ionicons/icons";
 import { UserContext } from "../App";
 
+import add from "../assets/add.svg";
+import explore from "../assets/explore.svg";
+import businesss from "../assets/business.svg";
+import events from "../assets/events.svg";
+import gallery from "../assets/gallery.svg";
+import paynow from "../assets/paynow.svg";
+import registrations from "../assets/registrations.svg";
+import watchlive from "../assets/watchlive.svg";
+import searchIcon from "../assets/search.svg";
+
 import dove from "../assets/dove.png";
 import banner from "../assets/banner.png";
 import testimony from "../assets/testimony.png";
 import "./HomeMain.css";
+import GetNews from "../services/GetNews";
+import GetTestimonies from "../services/GetTestimonies";
+import { IP } from "../services/config";
 
 function HomeMain() {
   const { user, setUser } = useContext(UserContext);
   const [homeModal, sethomeModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [news, setNews] = useState([]);
+  const [newsModalData, setNewsModalData] = useState({});
+  const [testimonies, setTestimonies] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
   let history = useHistory();
 
   const slideOpts = {
-    initialSlide: 0,
+    initialSlide: 1,
     speed: 400,
   };
 
   useEffect(() => {
+    GetNews().done((res) => {
+      console.log(res.data);
+      setNews(res.data);
+    });
+    GetTestimonies().done((res) => {
+      console.log(res.data);
+      setTestimonies(res.data);
+    });
     console.log(user);
 
     // async function getLocation() {
@@ -67,44 +98,97 @@ function HomeMain() {
 
     // getLocation();
   }, []);
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
+  function doRefresh(event) {
+    console.log("Begin async operation");
+    GetNews().done((res) => {
+      // add the new data to the front of the list
+      setNews((prev) => {
+        var new_data = res.data.filter((item) => {
+          return !prev.find((i) => i.id === item.id);
+        });
+        console.log(new_data);
+        if (new_data.length > 0) {
+          new_data.forEach((item) => {
+            prev.push(item);
+            return [...prev];
+          });
+        } else {
+          console.log("No new data");
+        }
+        console.log(prev);
+        return [...prev];
+      });
+    });
+
+    GetTestimonies().done((res) => {
+      // add the new data to the front of the list
+      setTestimonies((prev) => {
+        var new_data = res.data.filter((item) => {
+          return !prev.find((i) => i.id === item.id);
+        });
+        console.log(new_data);
+        if (new_data.length > 0) {
+          new_data.forEach((item) => {
+            prev.push(item);
+            return [...prev];
+          });
+        } else {
+          console.log("No new data");
+        }
+        console.log(prev);
+        return [...prev];
+      });
+    });
+
+    // GetTestimonies().done((res) => {
+    //   console.log(res.data);
+    //   setTestimonies(res.data);
+    // });
+
+    setTimeout(() => {
+      console.log("Async operation has ended");
+      event.detail.complete();
+    }, 1000);
+  }
+
   return (
     <IonPage>
       <IonModal isOpen={homeModal}>
         <IonContent>
           <IonCard>
             <IonCardHeader>
-              <IonCardTitle>STPPL Program Coming Up</IonCardTitle>
+              <IonCardTitle>{newsModalData?.title}</IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-              Dear faith community - Some of our beloved parishioners are
-              suffering extensive damages to their homes from the recent storm.
-              Many have lost possessions, important resources, and even the use
-              of their buildings. As a church, we must lift each other up and
-              support our members through tragedy. <br /> <br /> Please consider
-              adding an extra donation to our second collection this week. We
-              will be offering all donations to church members in need.
-              Donations will go to rebuilding homes and providing food and clean
-              water to survivors. If you've found yourself in need of
-              assistance, please contact the office at [phone number or email].{" "}
-              <br /> <br />
-              We will also be accepting donations of dry goods, baby necessities
-              and clothing. If you'd like to donate items, please visit the
-              office at [address or location]. Thank you for your continued
-              generosity! <br />
-              <IonButton onClick={() => sethomeModal(false)} expand="block">
+              {newsModalData?.content}
+
+              <br />
+              {/* <IonButton onClick={() => sethomeModal(false)} expand="block">
                 Sign Up
-              </IonButton>
+              </IonButton> */}
               <div className="ion-text-right">
                 <IonButton onClick={() => sethomeModal(false)} fill="outline">
-                  Home
+                  <IonIcon icon={closeCircle} />
+                  Close
                 </IonButton>
               </div>
             </IonCardContent>
           </IonCard>
         </IonContent>
       </IonModal>
+
       <IonContent>
-        <h1>{user.username}</h1>
+        <div>
+          <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+            <IonRefresherContent></IonRefresherContent>
+          </IonRefresher>
+        </div>
+        {/* <h1>{user.username}</h1> */}
         <div className="dove">
           <img src={dove} />
         </div>
@@ -116,18 +200,67 @@ function HomeMain() {
                 history.push("/Main/Home/Profile");
               }}
             >
-              <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
+              <img
+                src={
+                  user.profile?.trim()?.length > 0
+                    ? IP + "/" + user?.profile
+                    : "https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                }
+              />
             </IonAvatar>
           </div>
           <div className="HomeSearch">
-            {/* <IonIcon slot="icon" icon={searchCircle} /> */}
+            <IonIcon
+              style={{ padding: "10px" }}
+              slot="icon"
+              icon={searchIcon}
+            />
             <IonInput placeholder="  Search" />
           </div>
           <div>
             <IonIcon size="large" color="primary" icon={notifications} />
           </div>
         </div>
-        <IonCard button onClick={() => sethomeModal(true)}>
+
+        <IonSlides pager={true} options={slideOpts}>
+          {news.map((item) => (
+            <IonSlide key={item.id}>
+              <IonCard
+                button
+                onClick={() => {
+                  setNewsModalData(item);
+                  sethomeModal(true);
+                }}
+              >
+                <IonCardContent>
+                  <img
+                    style={{
+                      height: "220px",
+                      width: "100vw",
+                      objectFit: "cover",
+                    }}
+                    src={IP + "/" + item.document}
+                    // src={item.document}
+                  />
+                  <h2 style={{ fontWeight: "bold" }}>{item.title}</h2>{" "}
+                  {item.content.substring(0, 30) + "..."}
+                  <a>Read more</a>
+                </IonCardContent>
+              </IonCard>
+            </IonSlide>
+          ))}
+        </IonSlides>
+        {news.length < 1 && (
+          <IonCard>
+            <IonCardContent className="ion-text-center">
+              <IonCardHeader>
+                <IonCardTitle>No News</IonCardTitle>
+              </IonCardHeader>
+            </IonCardContent>
+          </IonCard>
+        )}
+
+        {/* <IonCard button onClick={() => sethomeModal(true)}>
           <IonCardContent>
             <img src={banner} />
             <h2 style={{ fontWeight: "bold" }}>
@@ -138,15 +271,15 @@ function HomeMain() {
             <br />
             <a>Read more...</a>
           </IonCardContent>
-        </IonCard>
+        </IonCard> */}
         <IonGrid>
           <div className="Main">
             <IonRow className="ion-text-center">
               <IonCol>
                 <IonCard button routerLink="/Main/Home/Tab2">
                   <IonCardContent>
-                    <div className="mainIcon">
-                      <IonIcon color="danger" icon={timer} />
+                    <div className="mainIcon ">
+                      <IonIcon color="danger" icon={explore} />
                     </div>
                     <div>Explore updates</div>
                   </IonCardContent>
@@ -156,7 +289,7 @@ function HomeMain() {
                 <IonCard button routerLink="/Main/Home/Event">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={calendar} />
+                      <IonIcon color="danger" icon={events} />
                     </div>
                     <div>Events</div>
                   </IonCardContent>
@@ -165,10 +298,10 @@ function HomeMain() {
             </IonRow>
             <IonRow className="ion-text-center">
               <IonCol>
-                <IonCard button>
+                <IonCard button routerLink="/Main/Home/WatchLive">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={videocam} />
+                      <IonIcon color="danger" icon={watchlive} />
                     </div>
                     <div>Watch Live</div>
                   </IonCardContent>
@@ -178,7 +311,7 @@ function HomeMain() {
                 <IonCard button routerLink="/Main/Home/ActivitiesRegistration">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={newspaper} />
+                      <IonIcon color="danger" icon={registrations} />
                     </div>
                     <div>Registrations</div>
                   </IonCardContent>
@@ -190,7 +323,7 @@ function HomeMain() {
                 <IonCard button>
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={cash} />
+                      <IonIcon color="danger" icon={paynow} />
                     </div>
                     <div>Pay Online</div>
                   </IonCardContent>
@@ -200,7 +333,7 @@ function HomeMain() {
                 <IonCard button routerLink="/Main/Home/BusinessLounge">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={business} />
+                      <IonIcon color="danger" icon={businesss} />
                     </div>
                     <div>Business Lounge</div>
                   </IonCardContent>
@@ -212,7 +345,7 @@ function HomeMain() {
                 <IonCard button routerLink="/Main/Home/Gallery">
                   <IonCardContent>
                     <div className="mainIcon">
-                      <IonIcon color="danger" icon={images} />
+                      <IonIcon color="danger" icon={gallery} />
                     </div>
                     <div>Gallery</div>
                   </IonCardContent>
@@ -231,6 +364,34 @@ function HomeMain() {
             </IonRow>
             <h2 style={{ marginLeft: "25px" }}>Testimonies</h2>
             <IonSlides pager={true} options={slideOpts}>
+              {testimonies.map((item) => (
+                <IonSlide key={item.id}>
+                  <IonCard button className="ion-text-center">
+                    <IonCardContent>
+                      <img
+                        style={{
+                          height: "220px",
+                          width: "100vw",
+                          objectFit: "cover",
+                        }}
+                        src={IP + "/" + item.document}
+                      />
+                      {item.content}
+                    </IonCardContent>
+                  </IonCard>
+                </IonSlide>
+              ))}
+            </IonSlides>
+            {testimonies.length < 1 && (
+              <IonCard>
+                <IonCardContent className="ion-text-center">
+                  <IonCardHeader>
+                    <IonCardTitle>No Testimonies</IonCardTitle>
+                  </IonCardHeader>
+                </IonCardContent>
+              </IonCard>
+            )}
+            {/* <IonSlides pager={true} options={slideOpts}>
               <IonSlide>
                 <IonCard button className="ion-text-center">
                   <IonCardContent>
@@ -260,7 +421,7 @@ function HomeMain() {
                   </IonCardContent>
                 </IonCard>
               </IonSlide>
-            </IonSlides>
+            </IonSlides> */}
           </div>
           <div className="main-end">
             <IonRow className="ion-align-items-center">

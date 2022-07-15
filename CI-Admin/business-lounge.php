@@ -9,6 +9,7 @@ $result = mysqli_query($conn, $sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,30 +17,31 @@ $result = mysqli_query($conn, $sql);
     <title>Business Lounge</title>
 
     <!-- Styles -->
-    <link href="assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
-    <link href="assets/plugins/uniform/css/default.css" rel="stylesheet"/>
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/>	
-    <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
-    
+    <link href="assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet" />
+    <link href="assets/plugins/uniform/css/default.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" />
+
     <!-- Theme Styles -->
-    <link href="assets/css/meteor.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/css/layers/dark-layer.css" class="theme-color" rel="stylesheet" type="text/css"/>
-    <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
-    
+    <link href="assets/css/meteor.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/layers/dark-layer.css" class="theme-color" rel="stylesheet" type="text/css" />
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+
     <script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
     <script src="assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
 
 
 </head>
+<<<<<<< HEAD
 <body class="compact-menu">
 
     <!-- Header + Menu -->
@@ -48,6 +50,14 @@ $result = mysqli_query($conn, $sql);
     require("header.php");
         
     ?>
+=======
+
+<body class="compact-menu">
+
+    <?php include('components.php')  ?>
+
+
+>>>>>>> 98b517b37ae160bc278c2ae51224606718d922e6
 
     <!-- Main Container -->
     <div class="page-inner">
@@ -130,10 +140,10 @@ $result = mysqli_query($conn, $sql);
                     <!-- Add new row button -->
                     <button type="button" class="btn btn-success m-b-sm" data-toggle="modal" data-target="#myModal">Add Business</button>
 
-                   
+
                     <div class="panel-body">
-                            <!-- Modal -->
-                            <form id="add-row-form" action="javascript:void(0);">
+                        <!-- Modal -->
+                        <form id="add-row-form" action="javascript:void(0);">
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -176,7 +186,7 @@ $result = mysqli_query($conn, $sql);
                                             <div class="form-group">
                                                 <!-- upload picture for service/product -->
                                                 <input type="file" id="file-input" class="form-control" placeholder="Upload picture for service or product" required>
-                                               
+
                                             </div>
                                             <div class="form-group">
                                                 <!-- input name of service/product -->
@@ -197,7 +207,7 @@ $result = mysqli_query($conn, $sql);
                                     </div>
                                 </div>
                             </div>
-                            </form>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -212,28 +222,29 @@ $result = mysqli_query($conn, $sql);
         ?>
         
     </div>
-</main>
+    </main>
 
 
 
-<!-- Javascripts -->
-<script src="assets/plugins/jquery/jquery-3.1.0.min.js"></script>
-<script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="assets/plugins/pace-master/pace.min.js"></script>
-<script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="assets/plugins/switchery/switchery.min.js"></script>
-<script src="assets/plugins/uniform/js/jquery.uniform.standalone.js"></script>
-<script src="assets/plugins/offcanvasmenueffects/js/classie.js"></script>
-<script src="assets/plugins/waves/waves.min.js"></script>
-<script src="assets/plugins/3d-bold-navigation/js/main.js"></script>
-<script src="assets/plugins/datatables/js/jquery.datatables.min.js"></script>
-<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script src="assets/js/meteor.min.js"></script>
-<script src="assets/js/pages/table-data.js"></script>
+    <!-- Javascripts -->
+    <script src="assets/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/plugins/pace-master/pace.min.js"></script>
+    <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/switchery/switchery.min.js"></script>
+    <script src="assets/plugins/uniform/js/jquery.uniform.standalone.js"></script>
+    <script src="assets/plugins/offcanvasmenueffects/js/classie.js"></script>
+    <script src="assets/plugins/waves/waves.min.js"></script>
+    <script src="assets/plugins/3d-bold-navigation/js/main.js"></script>
+    <script src="assets/plugins/datatables/js/jquery.datatables.min.js"></script>
+    <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/meteor.min.js"></script>
+    <script src="assets/js/pages/table-data.js"></script>
 
 
-    
+
 </body>
+
 </html>

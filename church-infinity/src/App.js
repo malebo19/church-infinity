@@ -37,6 +37,10 @@ const App = () => {
   // get user from the local storage
   const [user, setUser] = useState("");
   useEffect(() => {
+    if (localStorage.getItem("dark") === "true") {
+      document.body.classList.add("dark");
+    }
+
     localStorage.getItem("user") &&
       setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
@@ -54,7 +58,7 @@ const App = () => {
             </Route>
             <Route path="/Main">{user ? <Main /> : <Redirect to="/" />}</Route>
             <Route exact path="/">
-              <Redirect to="/Login" />
+              <Redirect to="/Login" />z
             </Route>
             {/* <Route path='*'>
               {!user ? <Redirect to="/Login" /> : <Redirect to="/Main/Home" />}

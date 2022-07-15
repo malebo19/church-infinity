@@ -30,6 +30,7 @@
      
 </head>
 <body class="compact-menu">
+<<<<<<< HEAD
 
    <!-- Header + Menu -->
    <?php 
@@ -37,6 +38,10 @@
     require("header.php");
             
     ?>
+=======
+    <?php include_once("components.php"); ?>
+
+>>>>>>> 98b517b37ae160bc278c2ae51224606718d922e6
 
     <!-- Page Content -->
     <div class="page-inner">

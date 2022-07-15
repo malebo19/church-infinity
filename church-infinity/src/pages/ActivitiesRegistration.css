@@ -19,14 +19,19 @@
     padding: 22px;
  
 }
+
+.cardbutton{
+    width: 150px;
+}
+
 .type-button{
     cursor: pointer;
     text-align: center;
     background: white;
-    margin: 7px;
-    border-radius: 15px;
+    /* margin: 7px; */
+    border-radius: 8px;
     padding: 5px;
-    width: 65%;
+    width: 100%;
 
    border-style: inset;
    transition: 0.3s;
