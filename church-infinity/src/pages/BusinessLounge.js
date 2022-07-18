@@ -9,7 +9,6 @@ import {
   IonHeader,
   IonLabel,
   IonPage,
-  IonRow,
   IonTitle,
 
   IonCol,

@@ -1,5 +1,4 @@
 import React from "react";
-import { Player, ControlBar } from "video-react";
 
 import {
   IonBackButton,
@@ -13,12 +12,11 @@ import {
   IonRow,
   IonTitle,
   IonToolbar,
-  IonItem,
-  IonInput,
   IonButton,
+  IonInput
 } from "@ionic/react";
 import vid from "../assets/fire_for_your_future.mp4";
-import { arrowRedo, thumbsUp, send, time, heart } from "ionicons/icons";
+import { arrowRedo, thumbsUp, send, time,heart } from "ionicons/icons";
 function WatchLive() {
   return (
     <IonPage>

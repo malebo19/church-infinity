@@ -31,8 +31,6 @@ import CampaignRegistration from "./CampaignsRegistration";
 import DepartmentsRegistration from "./DepartmentsRegistration";
 import SacramentsRegistration from "./SacramentsRegistration";
 import MinInstitutionsRegistration from "./MinInstitutionsRegistration";
-import Comments from "./Comments";
-// import WatchLive from "./WatchLive";
 
 function Home() {
   return (
